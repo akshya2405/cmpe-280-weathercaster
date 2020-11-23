@@ -1,5 +1,8 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  font: 20px Montserrat, sans-serif;
+  line-height: 1.8;
+/* color: #f5f6f7; */
 }
+p {font-size: 19px;}
+nav {font-size: large;}
+form {font-size: larger;}

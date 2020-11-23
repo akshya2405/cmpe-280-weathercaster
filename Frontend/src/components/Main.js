@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import { Redirect } from 'react-router';
-// import Login from './Login/Login';
-// import Home from './Home/Home';
-// import Delete from './Delete/Delete';
-// import Create from './Create/Create';
-// import Navbar from './LandingPage/Navbar';
+
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import Navbar from './LandingPage/Navbar';
 import HomePage from './LandingPage/HomePage';
 import Today from './search/Today';
@@ -21,7 +19,7 @@ class Main extends Component {
                 <Route path="/home" component={HomePage}/>
                 <Route path="/search/today" component={Today}/>
                 <Route path="/search/hourly" component={Hourly}/>
-                {/* <Route path="/create" component={Create}/> */}
+                {/* <Route path="/search/Monthly" component={Monthly}/> */}
             </div>
         )
     }
