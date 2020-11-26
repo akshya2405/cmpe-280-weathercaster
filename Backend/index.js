@@ -3,9 +3,13 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var cookieParser = require('cookie-parser');
+//var cookieParser = require('cookie-parser');
 var cors = require('cors');
 app.set('view engine', 'ejs');
+const todayRoutes = require('./Routes/today');
+const dotenv = require('dotenv');
+dotenv.config();
+
 
 //use cors to allow cross origin resource sharing
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
@@ -33,6 +37,20 @@ app.use(function(req, res, next) {
     res.setHeader('Cache-Control', 'no-cache');
     next();
   });
+
+  // const TodayWeather = require('./Routes/today');
+  // const HourlyWeather= require('./Routes/hourly');
+  // const WeekendWeather= require('./Routes/weekend');
+  // const TenDaysWeather= require('./Routes/tenDays');
+  // const MonthlyWeather= require('./Routes/monthly');
+  // const ForecastWeather= require('./Routes/forecast');
+
+app.use(todayRoutes);
+// app.use('/', HourlyWeather);
+// app.use('/', WeekendWeather);
+// app.use('/', TenDaysWeather);
+// app.use('/', MonthlyWeather);
+// app.use('/', ForecastWeather);
   
 //start your server on port 3001
 app.listen(3001);
