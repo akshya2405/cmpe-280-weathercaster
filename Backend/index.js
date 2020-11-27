@@ -9,7 +9,8 @@ app.set('view engine', 'ejs');
 const todayRoutes = require('./Routes/today');
 const dotenv = require('dotenv');
 dotenv.config();
-
+const hourlyRoutes = require('./Routes/hourly');
+const weeklyRoutes = require('./Routes/weekly');
 
 //use cors to allow cross origin resource sharing
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
@@ -38,19 +39,10 @@ app.use(function(req, res, next) {
     next();
   });
 
-  // const TodayWeather = require('./Routes/today');
-  // const HourlyWeather= require('./Routes/hourly');
-  // const WeekendWeather= require('./Routes/weekend');
-  // const TenDaysWeather= require('./Routes/tenDays');
-  // const MonthlyWeather= require('./Routes/monthly');
-  // const ForecastWeather= require('./Routes/forecast');
-
 app.use(todayRoutes);
-// app.use('/', HourlyWeather);
-// app.use('/', WeekendWeather);
-// app.use('/', TenDaysWeather);
-// app.use('/', MonthlyWeather);
-// app.use('/', ForecastWeather);
+app.use(hourlyRoutes);
+app.use(weeklyRoutes);
+
   
 //start your server on port 3001
 app.listen(3001);
