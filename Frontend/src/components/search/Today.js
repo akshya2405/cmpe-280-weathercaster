@@ -16,7 +16,7 @@ const Today = (props) => {
   const [otherImg, setOtherImg] = useState("");
   const [openModal, setOpenModal] = useState(false); 
   useEffect(async () => {
-    const response = await axios.get('http://localhost:3001/today', { params: { CityStateCountry: searchQuery, units: units } })
+    const response = await axios.get('http://localhost:3001/today/farenheit', { params: { CityStateCountry: searchQuery } })
     console.log(response.data);
     setSearchData(response.data);
     let img = "http://openweathermap.org/img/wn/" + response.data.current.weather[0].icon + "@4x.png";
