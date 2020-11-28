@@ -6,10 +6,22 @@ import { Search } from '../svg/svg';
 class Navbar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchString: ''
+    }
+    this.search = this.search.bind(this);
   }
-  //handle logout to destroy the cookie
+
+  search = (e) => {
+    if (this.state.searchString) {
+      sessionStorage.setItem("location", this.state.searchString)
+      this.props.history.push(this.props.location.pathname)
+    } else {
+      // setError("Please enter a location");
+    }
+  }
+
   render() {
-    //if Cookie is set render Logout Button
     return (
       <div>
         <div className="container-fluid">
@@ -22,6 +34,7 @@ class Navbar extends Component {
                 type="text"
                 id="navbar-input"
                 placeholder="Search using city, state or zipcode"
+                onChange={(e) => this.setState({searchString: e.target.value})}
               />
               <button
                 type="button"
