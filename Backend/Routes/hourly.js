@@ -4,7 +4,7 @@ const request = require('request');
 
 router.get('/hourly/celsius', async (req, res)=>{
     const CityStateCountry = req.query.CityStateCountry;
-    const units=req.query.units;
+    //const units=req.query.units;
     const api_key = process.env.API_KEY;
     const api_key2=process.env.API;
     let lat;
