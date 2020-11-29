@@ -8,6 +8,7 @@ import Navbar from './LandingPage/Navbar';
 import HomePage from './LandingPage/HomePage';
 import Today from './search/Today';
 import Hourly from './search/Hourly';
+import Weekend from './search/Weekend';
 //Create a Main Component
 class Main extends Component {
   render() {
@@ -19,6 +20,7 @@ class Main extends Component {
         <Route path="/home" component={HomePage} />
         <Route path="/search/today" component={Today} />
         <Route path="/search/hourly" component={Hourly} />
+        <Route path="/search/weekend" component={Weekend} />
         {/* <Route path="/search/Monthly" component={Monthly}/> */}
       </div>
     )
