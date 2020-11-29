@@ -6,10 +6,22 @@ import { Search } from '../svg/svg';
 class Navbar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchString: ''
+    }
+    this.search = this.search.bind(this);
   }
-  //handle logout to destroy the cookie
+
+  search = (e) => {
+    if (this.state.searchString) {
+      sessionStorage.setItem("location", this.state.searchString)
+      this.props.history.push(this.props.location.pathname)
+    } else {
+      // setError("Please enter a location");
+    }
+  }
+
   render() {
-    //if Cookie is set render Logout Button
     return (
       <div>
         <div className="container-fluid">
@@ -22,6 +34,7 @@ class Navbar extends Component {
                 type="text"
                 id="navbar-input"
                 placeholder="Search using city, state or zipcode"
+                onChange={(e) => this.setState({searchString: e.target.value})}
               />
               <button
                 type="button"
@@ -35,23 +48,23 @@ class Navbar extends Component {
             </form>
           </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#c0f2fa" }} >
+        <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: "#c0f2fa" }} >
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{textDecoration: "none"}}>
-            <ul className="navbar nav">
+            <ul className="nav nav-pills">
               <li className="nav-item"><NavLink className="nav-link" to="/home">Home</NavLink></li>
-              <li className="nav-item active"><NavLink className="nav-link" to="/search/today">Today</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/search/today">Today</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/hourly">Hourly</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/10Day">10 Day</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/weekend">Weekend</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/monthly">Monthly</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/forecast">Forecast</NavLink></li>
-              <li class="nav-item">
-                <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-info">&#x2103;</button>
-                  <button type="button" class="btn btn-info">&#x2109;</button>
+              <li className="nav-item">
+                <div className="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                  <button type="button" className="btn btn-info">&#x2103;</button>
+                  <button type="button" className="btn btn-info">&#x2109;</button>
                 </div>
               </li>
             </ul>

@@ -4,9 +4,9 @@ const request = require('request');
 
 router.get('/weekly/celsius', async (req, res)=>{
     const CityStateCountry = req.query.CityStateCountry;
-    const units=req.query.units;
-    const api_key = process.env.API_KEY;
-    const api_key2=process.env.API;
+    //const units=req.query.units;
+    const api_key = process.env.API_KEY;//api for open weather api
+    const api_key2=process.env.API;//api for google maps
     let lat;
     let lon;
     request(`https://maps.googleapis.com/maps/api/geocode/json?address=${CityStateCountry}&key=${api_key2}`, function (err, response, body) {
@@ -35,8 +35,8 @@ router.get('/weekly/celsius', async (req, res)=>{
 router.get('/weekly/farenheit', async (req, res)=>{
   const CityStateCountry = req.query.CityStateCountry;
   //const units=req.query.units;
-  const api_key = process.env.API_KEY;
-  const api_key2=process.env.API;
+  const api_key = process.env.API_KEY;//api for open weather api
+  const api_key2=process.env.API;//api for google maps
   let lat;
   let lon;
   request(`https://maps.googleapis.com/maps/api/geocode/json?address=${CityStateCountry}&key=${api_key2}`, function (err, response, body) {
