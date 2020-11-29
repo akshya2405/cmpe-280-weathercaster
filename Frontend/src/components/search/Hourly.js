@@ -91,22 +91,22 @@ class Hourly extends Component {
             var hourly = data.hourly
             console.log(data,data.hourly,typeof(resp.data),"response structure")
 
-
             return ( 
                 <Paper className={classes.root}>
                      <div><h5>{data.timezone}</h5></div> 
                      <div><h6>As of {moment.unix(hourly[0].dt).format("LT")} on {moment.unix(hourly[0].dt).format("MM/DD/YYYY")}</h6></div>
-              
+                <div className="d-flex justify-content-center" style={{ border: "solid black", width: "90%", margin: "auto" }}> 
                 <Table className={classes.table}>
                     <TableHead>
                     <TableRow>
                         <TableCell>Time</TableCell>
-                            <TableCell align="right">Temperature</TableCell>
+                            <TableCell align="right">Temp</TableCell>
                             <TableCell align="right">Weather Condition</TableCell>
-                            <TableCell align="right">Feels Like Temp</TableCell>
+                            {/* <TableCell align="right"></TableCell> */}
+                            <TableCell align="right">Feels Like</TableCell>
                             <TableCell align="right">Wind</TableCell>
                             <TableCell align="right">Humidity</TableCell>
-                            <TableCell align="right">Precipitation</TableCell>
+                            <TableCell align="right">Dew Point</TableCell>
                             <TableCell align="right">UV Index</TableCell>
                     </TableRow>
                     </TableHead>
@@ -116,17 +116,21 @@ class Hourly extends Component {
                         <TableCell component="th" scope="row">
                             {moment.unix(row.dt).format("hh:mm A")}
                         </TableCell>
-                            <TableCell align="right">{row.temp}</TableCell>
-                            <TableCell align="right">{row.weather[0].main}</TableCell>
-                            <TableCell align="right">{row.feels_like}</TableCell>
-                            <TableCell align="right">{row.wind_speed}</TableCell>
-                            <TableCell align="right">{row.humidity}</TableCell>
+                            <TableCell align="right"><h3>{Math.trunc(row.temp)}&deg;</h3></TableCell>
+                            {/* <TableCell align="right">{row.weather[0].main}</TableCell> */}
+                            <TableCell align="right">
+                            <img src={"http://openweathermap.org/img/wn/" + row.weather[0].icon + "@2x.png"}></img>
+                            </TableCell>
+                            <TableCell align="right">{Math.trunc(row.feels_like)}&deg;</TableCell>
+                            <TableCell align="right">{Math.trunc(row.wind_speed)}</TableCell>
+                            <TableCell align="right">{row.humidity}&#37;</TableCell>
                             <TableCell align="right">{row.dew_point}</TableCell>
                             <TableCell align="right">{row.uvi}</TableCell> 
                         </TableRow>
                     ))}
                     </TableBody>
                 </Table>
+                </div>
                 </Paper>
             );
         }
