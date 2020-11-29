@@ -94,6 +94,9 @@ class Hourly extends Component {
 
             return ( 
                 <Paper className={classes.root}>
+                     <div><h5>{data.timezone}</h5></div> 
+                     <div><h6>As of {moment.unix(hourly[0].dt).format("LT")} on {moment.unix(hourly[0].dt).format("MM/DD/YYYY")}</h6></div>
+              
                 <Table className={classes.table}>
                     <TableHead>
                     <TableRow>
@@ -146,8 +149,6 @@ class Hourly extends Component {
                 <p>Hourly Weather</p>
                 {/* <p className="App-intro">;{apiResponse}</p> */}
                 <div><h3>{searchQuery}</h3></div>
-                {/* <div className="row"><h5>{apiResponse.timezone}</h5></div> */}
-                {/* <div className="row"><h6>As of {moment.unix(apiResponse[0].hourly.dt).format("LT")} on {moment.unix(apiResponse[0].hourly.dt).format("MM/DD/YYYY")}</h6></div> */}
                 <div>{this.simpleTable(classes,apiResponse)}</div> 
             </div>
         )
