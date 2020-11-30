@@ -13,6 +13,7 @@ const HomePage = () => {
     if (searchString) {
       setError("")
       sessionStorage.setItem("location", searchString)
+      sessionStorage.setItem("units", "farenheit")
       history.push('/search/today');
     } else {
       setError("Please enter a location");

@@ -9,14 +9,20 @@ const Today = (props) => {
   // if (!(props.location.state === undefined || props.location.state === '' || props.location.state === null)) {
   //   sessionStorage.setItem("location", props.location.state)
   // }
-  const [searchQuery, setSearchQuery] = useState(sessionStorage.getItem("location"))
+  const [searchQuery, setSearchQuery] = useState(sessionStorage.getItem("location"));
   const [searchData, setSearchData] = useState({});
-  const [units, setUnits] = useState("imperial");
+  const [units, setUnits] = useState(sessionStorage.getItem("units"));
   const [mainImg, setmainImg] = useState("");
   const [otherImg, setOtherImg] = useState("");
-  const [openModal, setOpenModal] = useState(false); 
+  const [openModal, setOpenModal] = useState(false);
+  
   useEffect(async () => {
-    const response = await axios.get('http://localhost:3001/today/farenheit', { params: { CityStateCountry: searchQuery } })
+    let response;
+    if (units === "celsius") {
+      response = await axios.get('http://localhost:3001/today/celsius', { params: { CityStateCountry: searchQuery } })
+    } else {
+      response = await axios.get('http://localhost:3001/today/farenheit', { params: { CityStateCountry: searchQuery } })
+    }
     console.log(response.data);
     setSearchData(response.data);
     let img = "http://openweathermap.org/img/wn/" + response.data.current.weather[0].icon + "@4x.png";
