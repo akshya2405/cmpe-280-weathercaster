@@ -7,7 +7,9 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchString: ''
+      searchString: '',
+      celsius: false,
+      farenheit: true,
     }
     this.search = this.search.bind(this);
   }
@@ -21,7 +23,19 @@ class Navbar extends Component {
     }
   }
 
+  reloadPage = (e) => {
+    sessionStorage.setItem("units", e.target.id);
+    this.props.history.push(this.props.location.pathname);
+  }
+
   render() {
+    if (sessionStorage.getItem("units") === 'celsius') {
+      this.state.celsius = true;
+      this.state.farenheit = false;
+    } else {
+      this.state.celsius = false;
+      this.state.farenheit = true;
+    }
     return (
       <div>
         <div className="container-fluid">
@@ -62,9 +76,9 @@ class Navbar extends Component {
               <li className="nav-item"><NavLink className="nav-link" to="/search/monthly">Monthly</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/forecast">Forecast</NavLink></li>
               <li className="nav-item">
-                <div className="btn-group btn-group-lg" role="group" aria-label="Basic example">
-                  <button type="button" className="btn btn-info">&#x2103;</button>
-                  <button type="button" className="btn btn-info">&#x2109;</button>
+                <div className="btn-group btn-group-lg" role="group" aria-label="Temp unit">
+                  <button type="button" id="celsius" className="btn btn-info" disabled={this.state.celsius} onClick={this.reloadPage}>&#x2103;</button>
+                  <button type="button" id="farenheit" className="btn btn-info" disabled={this.state.farenheit} onClick={this.reloadPage}>&#x2109;</button>
                 </div>
               </li>
             </ul>
