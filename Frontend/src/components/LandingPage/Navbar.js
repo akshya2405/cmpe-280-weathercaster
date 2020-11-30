@@ -71,7 +71,7 @@ class Navbar extends Component {
               <li className="nav-item"><NavLink className="nav-link" to="/home">Home</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/today">Today</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/hourly">Hourly</NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/search/10Day">10 Day</NavLink></li>
+              <li className="nav-item"><NavLink className="nav-link" to="/search/weekly">Weekly</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/weekend">Weekend</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/monthly">Monthly</NavLink></li>
               <li className="nav-item"><NavLink className="nav-link" to="/search/forecast">Forecast</NavLink></li>
