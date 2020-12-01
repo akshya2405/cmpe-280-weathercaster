@@ -54,7 +54,8 @@ class Hourly extends Component {
         // this.search = this.search.bind(this);
         this.state = { 
             apiResponse: "",
-            searchQuery : sessionStorage.getItem("location")
+            searchQuery : sessionStorage.getItem("location"),
+            units       : sessionStorage.getItem("units")
         };
         
 
@@ -72,8 +73,15 @@ class Hourly extends Component {
         //     .then(res => this.setState({ apiResponse: res }));
 
         const { searchQuery } = this.state
+        const { units  } = this.state
+        let response;
 
-        const response = await axios.get("http://localhost:3001/hourly/celsius", { params: { CityStateCountry: searchQuery } })
+        if (units === "celsius") {
+            response = await axios.get('http://localhost:3001/hourly/celsius', { params: { CityStateCountry: searchQuery } })
+          } else {
+            response = await axios.get('http://localhost:3001/hourly/farenheit', { params: { CityStateCountry: searchQuery } })
+          }
+
         console.log(response.data);
         this.setState({ apiResponse: response })
     }
@@ -94,7 +102,7 @@ class Hourly extends Component {
             return ( 
                 <Paper className={classes.root}>
                      <div><h5>{data.timezone}</h5></div> 
-                     <div><h6>As of {moment.unix(hourly[0].dt).format("LT")} on {moment.unix(hourly[0].dt).format("MM/DD/YYYY")}</h6></div>
+                     <div><h6>As of {moment(new Date()).tz(data.timezone).format("LT")} on {moment(new Date()).tz(data.timezone).format("MM/DD/YYYY")}</h6></div>
                 <div className="d-flex justify-content-center" style={{ border: "solid black", width: "90%", margin: "auto" }}> 
                 <Table className={classes.table}>
                     <TableHead>
@@ -114,7 +122,7 @@ class Hourly extends Component {
                     {hourly.map(row => (
                         <TableRow key={row.id}>
                         <TableCell component="th" scope="row">
-                            {moment.unix(row.dt).format("hh:mm A")}
+                            {moment.unix(row.dt, "hh:mm A").tz(data.timezone).format("hh:mm A")}
                         </TableCell>
                             <TableCell align="right"><h3>{Math.trunc(row.temp)}&deg;</h3></TableCell>
                             {/* <TableCell align="right">{row.weather[0].main}</TableCell> */}

@@ -55,7 +55,8 @@ class Weekend extends Component {
         // this.search = this.search.bind(this);
         this.state = { 
             apiResponse: "",
-            searchQuery : sessionStorage.getItem("location")
+            searchQuery : sessionStorage.getItem("location"),
+            units       : sessionStorage.getItem("units")
         };
         
 
@@ -73,8 +74,15 @@ class Weekend extends Component {
         //     .then(res => this.setState({ apiResponse: res }));
 
         const { searchQuery } = this.state
+        const { units  } = this.state
+        let response;
 
-        const response = await axios.get("http://localhost:3001/weekend/farenheit", { params: { CityStateCountry: searchQuery } })
+        if (units === "celsius") {
+            response = await axios.get('http://localhost:3001/weekend/celsius', { params: { CityStateCountry: searchQuery } })
+          } else {
+            response = await axios.get('http://localhost:3001/weekend/farenheit', { params: { CityStateCountry: searchQuery } })
+          }
+
         console.log(response.data);
         this.setState({ apiResponse: response })
     }
@@ -96,7 +104,7 @@ class Weekend extends Component {
             return ( 
                 <Paper className={classes.root}>
                      <div><h5>{data[0].timezone}</h5></div> 
-                     <div><h6>As of {moment.unix(weekend[0].dt).format("LT")} on {moment.unix(weekend[0].dt).format("MM/DD/YYYY")}</h6></div>
+                     <div><h6>As of {moment(new Date()).tz(data[0].timezone).format("LT")} on {moment(new Date()).tz(data[0].timezone).format("MM/DD/YYYY")}</h6></div>
                 <div className="d-flex justify-content-center" style={{ border: "solid black", width: "90%", margin: "auto" }}>
                 <Table className={classes.table}>
                     <TableHead>
