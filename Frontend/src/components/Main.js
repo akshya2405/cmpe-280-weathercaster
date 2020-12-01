@@ -10,6 +10,7 @@ import Today from './search/Today';
 import Hourly from './search/Hourly';
 import Weekend from './search/Weekend';
 import Weekly from './search/Weekly';
+import Monthly from './search/Monthly';
 //Create a Main Component
 class Main extends Component {
   render() {

@@ -12,6 +12,7 @@ dotenv.config();
 const hourlyRoutes = require('./Routes/hourly');
 const weeklyRoutes = require('./Routes/weekly');
 const weekendRoutes = require('./Routes/weekend');
+const monthlyRoutes = require('./Routes/monthly');
 
 //use cors to allow cross origin resource sharing
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
@@ -44,6 +45,7 @@ app.use(todayRoutes);
 app.use(hourlyRoutes);
 app.use(weeklyRoutes);
 app.use(weekendRoutes);
+app.use(monthlyRoutes);
 
   
 //start your server on port 3001
