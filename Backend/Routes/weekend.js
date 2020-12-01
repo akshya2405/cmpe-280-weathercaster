@@ -29,10 +29,12 @@ router.get('/weekend/celsius', async (req, res) => {
                 } else {
                     console.log('body:', body);
                     let data = JSON.parse(body);
+                    let timezone=data.timezone;
                     //console.log('date:', new Date(data.current.dt*1000));
                     //console.log('date:', moment.unix(data.daily[0].dt).format("MM/DD/YYYY"));
                     //console.log('time:', moment.unix(data.daily.dt).format("LTS"));
                     var week_end = [];
+                    week_end.push({'timezone':timezone});
                     data.daily.map(function(value, i) {
                         var d=moment.unix(value.dt).format('d');
                         // console.log(moment.unix(value.dt).format('dddd'));
