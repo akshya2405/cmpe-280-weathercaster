@@ -77,7 +77,7 @@ class Weekly extends Component {
             return ( 
                 <Paper className={classes.root}>
                      <div><h5>{data.timezone}</h5></div> 
-                     <div><h6>As of {moment.unix(weekly.daily[0].dt).format("llll")} on {moment.unix(weekly.daily[0].dt).format("MM/DD/YYYY")}</h6></div>
+                     <div><h6>As of {moment(new Date()).tz(data.timezone).format("LT")} on {moment(new Date()).tz(data.timezone).format("MM/DD/YYYY")}</h6></div>
                 <div className="d-flex justify-content-center" style={{ border: "solid black", width: "90%", margin: "auto" }}>
                 <Table className={classes.table}>
                     <TableHead>
