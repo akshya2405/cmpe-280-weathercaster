@@ -74,25 +74,28 @@ router.get('/weekend/farenheit', async (req, res) => {
                 if (err) {
                     console.log('error:', error);
                 } else {
-                    console.log('body:', body);
+                    //console.log('body:', body);
                     let data = JSON.parse(body);
+                    console.log(data);
+                    let timezone=data.timezone;
                     //const size=data.length();//this is an array. loop through this array and get dt values out of the array. 
                     //console.log('date:', new Date(data.current.dt*1000));
                     //console.log('date:', moment.unix(data.daily.dt).format("MM/DD/YYYY"));//here 'd' will give a value 0-6. whenever the d is 4/5/6--> push this data to another array and return this array out to frontend.
                     //console.log('time:', moment.unix(data.daily.dt).format("LTS"));
 
                     var week_end = [];
+                    week_end.push({'timezone':timezone});
                     data.daily.map(function(value, i) {
                         var d=moment.unix(value.dt).format('d');
                         // console.log(moment.unix(value.dt).format('dddd'));
                         // console.log(i);
                         if (d==0||d==5||d==6){
-                            console.log(moment.unix(value.dt).format('dddd'));
+                            //console.log(moment.unix(value.dt).format('dddd'));
                             week_end.push(value);
                         }
-
+                        //console.log(week_end);
                     });
-                    //res.status(200).json(data);
+                    //console.log(week_end);
                     res.status(200).json(week_end);
             
                     }

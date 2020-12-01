@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import moment from 'moment';
+import moment_timezone from 'moment-timezone';
 import { useHistory } from "react-router-dom";
 
 
@@ -88,13 +89,13 @@ class Weekend extends Component {
         let data=resp.data;
 
         if(data){
-            var weekend = data
+            var weekend = data.slice(1,data.length-1)
             console.log(data,weekend,typeof(resp.data),"response structure")
 
 
             return ( 
                 <Paper className={classes.root}>
-                     <div><h5>{data.timezone}</h5></div> 
+                     <div><h5>{data[0].timezone}</h5></div> 
                      <div><h6>As of {moment.unix(weekend[0].dt).format("LT")} on {moment.unix(weekend[0].dt).format("MM/DD/YYYY")}</h6></div>
                 <div className="d-flex justify-content-center" style={{ border: "solid black", width: "90%", margin: "auto" }}>
                 <Table className={classes.table}>
@@ -122,8 +123,10 @@ class Weekend extends Component {
                             <TableCell align="right">
                             <img src={"http://openweathermap.org/img/wn/" + row.weather[0].icon + "@2x.png"}></img>
                             </TableCell>
-                            <TableCell align="right">{moment.unix(row.sunrise).format("h A")}</TableCell>
-                            <TableCell align="right">{moment.unix(row.sunset).format("h A")}</TableCell>
+                            {/* <TableCell align="right">{moment.unix(row.sunrise).format("h A")}</TableCell> */}
+                            <TableCell align="right">{moment.unix(row.sunrise, "LT").tz(data[0].timezone).format("LT")}</TableCell>
+                            <TableCell align="right">{moment.unix(row.sunset, "LT").tz(data[0].timezone).format("LT")}</TableCell>
+                            {/* <TableCell align="right">{moment.unix(row.sunset).format("LT")}</TableCell> */}
                             <TableCell align="right">{Math.trunc(row.wind_speed)}</TableCell>
                             <TableCell align="right">{row.humidity}&#37;</TableCell>
                             <TableCell align="right">{row.dew_point}</TableCell>
