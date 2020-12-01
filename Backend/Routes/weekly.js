@@ -15,6 +15,7 @@ router.get('/weekly/celsius', async (req, res)=>{
             } else {
                 let bodydata= JSON.parse(body);
                 console.log('body:', bodydata.results[0].geometry.location);
+                console.log(moment(row.sunrise).tz(bodydata.timezone).format("h A"));
                 lat= bodydata.results[0].geometry.location.lat;
                 lon=bodydata.results[0].geometry.location.lng;
                 const weather_url= `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${api_key}`;
@@ -25,6 +26,7 @@ router.get('/weekly/celsius', async (req, res)=>{
                       console.log('body:', body);
                       let data=JSON.parse(body);
                       res.status(200).json(data);
+                      //console.log(moment(row.sunrise).tz(data.timezone).format("h A"));
                     }
             });
         }    

@@ -1,4 +1,3 @@
-import React,{Component, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -9,6 +8,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import moment from 'moment';
+import React, { useEffect, useState, Component } from 'react';
+var moment_timezone = require('moment-timezone');
 
 const styles = theme => ({
     root: {
@@ -29,29 +30,31 @@ return { Time,Temperature, Weather_like, Feels_Like_Temp, Wind, Humidity,Precipi
 }
 
 class Weekly extends Component {
+
     constructor(props){
         super(props);
         // this.search = this.search.bind(this);
         this.state = { 
             apiResponse: "",
             searchQuery : sessionStorage.getItem("location")
-        };
-        
+        }; 
 
     }
 
     async callAPI() {
-
         const { searchQuery } = this.state
-
         const response = await axios.get("http://localhost:3001/weekly/farenheit", { params: { CityStateCountry: searchQuery } })
         console.log(response.data);
         this.setState({ apiResponse: response })
     }
 
+    
+
     componentDidMount() {
         this.callAPI();
     }
+
+   
 
     simpleTable(classes,resp) {
         // const { classes } = props;
@@ -92,8 +95,8 @@ class Weekly extends Component {
                             <TableCell align="right">
                             <img src={"http://openweathermap.org/img/wn/" + row.weather[0].icon + "@2x.png"}></img>
                             </TableCell>
-                            <TableCell align="right">{moment.unix(row.sunrise).format("h A")}</TableCell>
-                            <TableCell align="right">{moment.unix(row.sunset).format("h A")}</TableCell>
+                            <TableCell align="right">{moment.unix(row.sunrise, "LT").tz(data.timezone).format("LT")}</TableCell>
+                            <TableCell align="right">{moment.unix(row.sunset, "LT").tz(data.timezone).format("LT")}</TableCell>
                             <TableCell align="right">{Math.trunc(row.wind_speed)}</TableCell>
                             <TableCell align="right">{row.humidity}&#37;</TableCell>
                             <TableCell align="right">{row.dew_point}</TableCell>
@@ -109,6 +112,7 @@ class Weekly extends Component {
     }
 
     render(){
+        
 
         const { apiResponse } = this.state;
         const { classes } = this.props;
@@ -125,6 +129,8 @@ class Weekly extends Component {
         )
     }
 }
+
+
 
 Weekly.propTypes = {
     classes: PropTypes.object.isRequired,

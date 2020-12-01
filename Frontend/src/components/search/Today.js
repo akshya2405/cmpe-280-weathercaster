@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import AlertModal from '../AlertModal'
+import AlertModal from '../AlertModal';
+import moment_timezone from 'moment-timezone';
 
 import { getCurrentData } from '../../actions/search'
 
@@ -60,12 +61,12 @@ const Today = (props) => {
             {/* style={{border: "coral solid"}}> */}
             <div className="col-sm-12">
               <div className="row">
-                <div className="col-sm-4">Sunrise {searchData.current && moment.unix(searchData.current.sunrise).format("LT")}</div>
+                <div className="col-sm-4">Sunrise {searchData.current && moment.unix(searchData.current.sunrise, "LT").tz(searchData.timezone).format("LT")}</div>
                 <div className="col-sm-4">UV index {searchData.current && searchData.current.uvi}</div>
                 <div className="col-sm-4">Dew point {searchData.current && searchData.current.dew_point}</div>
               </div>
               <div className="row">
-                <div className="col-sm-4">Sunset {searchData.current && moment.unix(searchData.current.sunset).format("LT")}</div>
+                <div className="col-sm-4">Sunset {searchData.current && moment.unix(searchData.current.sunset, "LT").tz(searchData.timezone).format("LT")}</div>
                 <div className="col-sm-4">Humidity {searchData.current && searchData.current.humidity}</div>
                 <div className="col-sm-4">Wind {searchData.current && searchData.current.wind_speed}</div>
               </div>
