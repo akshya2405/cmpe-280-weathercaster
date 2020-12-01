@@ -4,8 +4,6 @@ import moment from 'moment';
 import AlertModal from '../AlertModal';
 import moment_timezone from 'moment-timezone';
 
-import { getCurrentData } from '../../actions/search'
-
 const Today = (props) => {
   // if (!(props.location.state === undefined || props.location.state === '' || props.location.state === null)) {
   //   sessionStorage.setItem("location", props.location.state)
@@ -47,9 +45,9 @@ const Today = (props) => {
             <div className="col-sm-6" style={{ marginLeft: "1rem", marginTop: "1rem" }}>
               <div className="row"><h3>{searchQuery}</h3></div>
               <div className="row"><h5>{searchData.timezone}</h5></div>
-              <div className="row"><h6>As of {searchData.current && moment.unix(searchData.current.dt).format("LT")} on {searchData.current && moment.unix(searchData.current.dt).format("MM/DD/YYYY")}</h6></div>
-              <div className="row"><h1>{searchData.current && searchData.current.temp}&deg;&emsp;</h1>
-                <h5 style={{ paddingTop: "1rem" }}>feels like {searchData.current && searchData.current.feels_like}&deg;</h5></div>
+              <div className="row"><h6>As of {searchData.current && moment.unix(searchData.current.dt, "LT").tz(searchData.timezone).format("LT")} on {searchData.current && moment.unix(searchData.current.dt, "MM/DD/YYYY").tz(searchData.timezone).format("MM/DD/YYYY")}</h6></div>
+              <div className="row"><h1>{searchData.current && Math.trunc(searchData.current.temp)}&deg;&emsp;</h1>
+                <h5 style={{ paddingTop: "1rem" }}>feels like {searchData.current && Math.trunc(searchData.current.feels_like)}&deg;</h5></div>
               <div className="row"><h6>{searchData.current && searchData.current.weather[0].main}</h6></div>
             </div>
             <div className="col-sm-4" style={{ textAlign: "center" }}>
@@ -88,25 +86,25 @@ const Today = (props) => {
           <div className="row">
             <div className="col-sm-2" style={{ border: "black solid 0.5px", marginLeft: "1rem", textAlign: "center", backgroundColor:"#92d2fc" }}>
               <div>Morning</div>
-              <h3>{searchData.daily && searchData.daily[0].temp.morn}&deg;</h3>
+              <h3>{searchData.daily && Math.trunc(searchData.daily[0].temp.morn)}&deg;</h3>
               <img src={otherImg}
                 alt={searchData.daily && searchData.daily[0].weather[0].description}></img>
             </div>
             <div className="col-sm-2" style={{ border: "black solid 0.5px", marginLeft: "1rem", textAlign: "center", backgroundColor: "#92d2fc" }}>
               <div>Afternoon</div>
-              <h3>{searchData.daily && searchData.daily[0].temp.day}&deg;</h3>
+              <h3>{searchData.daily && Math.trunc(searchData.daily[0].temp.day)}&deg;</h3>
               <img src={otherImg}
                 alt={searchData.daily && searchData.daily[0].weather[0].description}></img>
             </div>
             <div className="col-sm-2" style={{ border: "black solid 0.5px", marginLeft: "1rem", textAlign: "center", backgroundColor: "#013557", color:"#FFFFFF" }}>
               <div>Evening</div>
-              <h3>{searchData.daily && searchData.daily[0].temp.eve}&deg;</h3>
+              <h3>{searchData.daily && Math.trunc(searchData.daily[0].temp.eve)}&deg;</h3>
               <img src={otherImg}
                 alt={searchData.daily && searchData.daily[0].weather[0].description}></img>
             </div>
             <div className="col-sm-2" style={{ border: "black solid 0.5px", marginLeft: "1rem", textAlign: "center", backgroundColor: "#013557", color:"#FFFFFF" }}>
               <div>Night</div>
-              <h3>{searchData.daily && searchData.daily[0].temp.night}&deg;</h3>
+              <h3>{searchData.daily && Math.trunc(searchData.daily[0].temp.night)}&deg;</h3>
               <img src={otherImg}
                 alt={searchData.daily && searchData.daily[0].weather[0].description}></img>
             </div>

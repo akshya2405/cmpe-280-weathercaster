@@ -8,7 +8,7 @@ const AlertModal = (props) => {
       <div class="btn">
         <div class="alert alert-warning" role="alert" data-toggle="modal"
           data-target="#alertModal">
-          {props.description}
+          {props.event}
         </div>
       </div>
 

@@ -10,6 +10,8 @@ class Navbar extends Component {
       searchString: '',
       celsius: false,
       farenheit: true,
+      celsiusColor: '',
+      farenheitColor: '',
     }
     this.search = this.search.bind(this);
   }
@@ -32,9 +34,13 @@ class Navbar extends Component {
     if (sessionStorage.getItem("units") === 'celsius') {
       this.state.celsius = true;
       this.state.farenheit = false;
+      this.state.celsiusColor = "#d15700";
+      this.state.farenheitColor = "";
     } else {
       this.state.celsius = false;
       this.state.farenheit = true;
+      this.state.farenheitColor = "#d15700";
+      this.state.celsiusColor = "";
     }
     return (
       <div>
@@ -77,10 +83,11 @@ class Navbar extends Component {
               <li className="nav-item"><NavLink className="nav-link" to="/search/forecast">Forecast</NavLink></li>
               <li className="nav-item">
                 <div className="btn-group btn-group-lg" role="group" aria-label="Temp unit">
-                  <button type="button" id="celsius" className="btn btn-info" disabled={this.state.celsius} onClick={this.reloadPage}>&#x2103;</button>
-                  <button type="button" id="farenheit" className="btn btn-info" disabled={this.state.farenheit} onClick={this.reloadPage}>&#x2109;</button>
+                  <button type="button" id="celsius" className="btn btn-info" disabled={this.state.celsius} style={{backgroundColor: this.state.celsiusColor}} onClick={this.reloadPage}>&#x2103;</button>
+                  <button type="button" id="farenheit" className="btn btn-info" disabled={this.state.farenheit} style={{ backgroundColor: this.state.farenheitColor }} onClick={this.reloadPage}>&#x2109;</button>
                 </div>
               </li>
+              <li>{sessionStorage.getItem("units") === 'celcius' ? (<div style={{ paddingTop: "1rem" }}>&#x2103;</div>) : (<div style={{ paddingTop: "1rem" }}>&#x2109;</div>)}</li>
             </ul>
           </div>
         </nav>

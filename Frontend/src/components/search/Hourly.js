@@ -128,6 +128,7 @@ class Hourly extends Component {
                             {/* <TableCell align="right">{row.weather[0].main}</TableCell> */}
                             <TableCell align="right">
                             <img src={"http://openweathermap.org/img/wn/" + row.weather[0].icon + "@2x.png"}></img>
+                            <p>{row.weather[0].description}</p>
                             </TableCell>
                             <TableCell align="right">{Math.trunc(row.feels_like)}&deg;</TableCell>
                             <TableCell align="right">{Math.trunc(row.wind_speed)}</TableCell>
