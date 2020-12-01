@@ -36,14 +36,23 @@ class Weekly extends Component {
         // this.search = this.search.bind(this);
         this.state = { 
             apiResponse: "",
-            searchQuery : sessionStorage.getItem("location")
+            searchQuery : sessionStorage.getItem("location"),
+            units       : sessionStorage.getItem("units")
         }; 
 
     }
 
     async callAPI() {
         const { searchQuery } = this.state
-        const response = await axios.get("http://localhost:3001/weekly/farenheit", { params: { CityStateCountry: searchQuery } })
+        const { units  } = this.state
+        let response;
+
+        if (units === "celsius") {
+            response = await axios.get('http://localhost:3001/weekly/celsius', { params: { CityStateCountry: searchQuery } })
+          } else {
+            response = await axios.get('http://localhost:3001/weekly/farenheit', { params: { CityStateCountry: searchQuery } })
+          }
+
         console.log(response.data);
         this.setState({ apiResponse: response })
     }
