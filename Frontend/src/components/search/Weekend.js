@@ -55,7 +55,8 @@ class Weekend extends Component {
         // this.search = this.search.bind(this);
         this.state = { 
             apiResponse: "",
-            searchQuery : sessionStorage.getItem("location")
+            searchQuery : sessionStorage.getItem("location"),
+            units       : sessionStorage.getItem("units")
         };
         
 
@@ -73,8 +74,15 @@ class Weekend extends Component {
         //     .then(res => this.setState({ apiResponse: res }));
 
         const { searchQuery } = this.state
+        const { units  } = this.state
+        let response;
 
-        const response = await axios.get("http://localhost:3001/weekend/farenheit", { params: { CityStateCountry: searchQuery } })
+        if (units === "celsius") {
+            response = await axios.get('http://localhost:3001/weekend/celsius', { params: { CityStateCountry: searchQuery } })
+          } else {
+            response = await axios.get('http://localhost:3001/weekend/farenheit', { params: { CityStateCountry: searchQuery } })
+          }
+
         console.log(response.data);
         this.setState({ apiResponse: response })
     }
