@@ -42,7 +42,7 @@ const Monthly = () => {
     // console.log(response.data.list.filter((data, index) => moment.unix(data.dt).format("D") === 10));
   }, []);
 
-  console.log('list', monthData.length > 0 && monthData.filter((data, index) => (moment.unix(data.dt).format("D") === '10')))
+  //console.log('list', monthData.length > 0 && monthData.filter((data, index) => (moment.unix(data.dt).format("D") === '10')))
   console.log('list', typeof monthData);
 
   let day = (val) => {
