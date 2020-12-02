@@ -14,6 +14,7 @@ const hourlyRoutes = require('./Routes/hourly');
 const weeklyRoutes = require('./Routes/weekly');
 const weekendRoutes = require('./Routes/weekend');
 const monthlyRoutes = require('./Routes/monthly');
+const port = process.env.PORT || 5000
 
 //use cors to allow cross origin resource sharing
  //app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
@@ -61,5 +62,5 @@ app.use(monthlyRoutes);
 //app.listen(3001);
 //console.log("Server Listening on port 3001");
 
-app.listen(process.env.PORT, '0.0.0.0');
+app.listen(port);
 console.log("Server listening");
