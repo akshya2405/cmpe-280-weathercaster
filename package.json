@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "start": "cd Backend && node index.js",
-    "heroku-postbuild": "cd Frontend && npm run build"
+    "heroku-postbuild": "cd Backend && npm run build"
   },
   "author": "",
   "license": "ISC",
