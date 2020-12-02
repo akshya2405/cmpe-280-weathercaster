@@ -8,7 +8,8 @@
     "Frontend": "cd Frontend && npm start",
     "Backend": "cd Backend && nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
-    "Frontend:build": "cd Frontend && npm run build"
+    "Frontend:build": "cd Frontend && npm run build",
+    "start":"npm run dev"
   },
   "author": "",
   "license": "ISC",
