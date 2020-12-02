@@ -24,7 +24,7 @@ class Main extends Component {
         <Route path="/search/hourly" component={Hourly} />
         <Route path="/search/weekend" component={Weekend} />
         <Route path="/search/weekly" component={Weekly} />
-        {/* <Route path="/search/Monthly" component={Monthly}/> */}
+        <Route path="/search/Monthly" component={Monthly}/>
       </div>
     )
   }

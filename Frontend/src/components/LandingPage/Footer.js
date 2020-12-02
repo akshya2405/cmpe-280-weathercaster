@@ -3,9 +3,9 @@ import React,{Component} from 'react';
 class Footer extends Component {
     render(){
         return(
-            <div>
+            <div style={{textAlign: "center"}}>
                 <footer>
-                    <p>Data source from API</p>
+              <div>Data sourced from <a href="https://openweathermap.org/api">OpenWeatherMap API</a></div>
                 </footer>
         </div>
         )

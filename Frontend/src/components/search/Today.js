@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import AlertModal from '../AlertModal';
 import moment_timezone from 'moment-timezone';
+import Footer from '../LandingPage/Footer';
 
 const Today = (props) => {
   // if (!(props.location.state === undefined || props.location.state === '' || props.location.state === null)) {
@@ -36,6 +37,7 @@ const Today = (props) => {
     setOpenModal(true);
   }
   return (
+    <div>
     <div className="d-flex justify-content-center" style={{ border: "solid black", width: "80%", margin: "auto", height: "80vh" }}>
       <div className="card" style={{ width: "100%", height: "100%" }}>
         <div className="card-body">
@@ -111,6 +113,8 @@ const Today = (props) => {
           </div>
         </div>
       </div>
+    </div>
+    <Footer />
     </div>
   )
 }
