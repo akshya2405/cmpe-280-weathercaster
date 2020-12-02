@@ -1,15 +1,15 @@
 {
-  "name": "backend",
+  "name": "cmpe-280-weathercaster",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "Frontend": "cd Frontend && npm start",
-    "Backend": "cd Backend && nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
-    "Frontend:build": "cd Frontend && npm run build",
-    "start":"npm run dev"
+    "build": "concurrently \"cd Frontend && npm run build\" \"npm build \"",
+    "Frontend": "cd ./Frontend && npm start",
+    "Backend": "cd ./Backend && nodemon index.js",
+    "start": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
+    "Frontend:build": "cd Frontend && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -32,3 +32,4 @@
     "request": "^2.88.2"
   }
 }
+
