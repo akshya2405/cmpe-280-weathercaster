@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "concurrently \"cd Frontend && npm run build\" \"npm build \"",
     "Frontend": "cd Frontend && npm start",
     "Backend": "cd Backend && nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
