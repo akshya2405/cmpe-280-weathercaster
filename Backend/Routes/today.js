@@ -8,8 +8,10 @@ const moment = require('moment');
 router.get('/today/celsius', async (req, res) => {
     const CityStateCountry = req.query.CityStateCountry;
     //const units = req.query.units;
-    const api_key = process.env.API_KEY;//open weather api
-    const api_key2=process.env.API;//google maps api
+    //const api_key = process.env.API_KEY;//open weather api
+    const api_key ="db25e525608fa4c9131b8f6f41004d75";
+    //const api_key2=process.env.API;//google maps api
+    const api_key2="AIzaSyA7JiFIXLD7134iiKSHug1BjonKM3YBQH0";
     let lat;
     let lon;
     request(`https://maps.googleapis.com/maps/api/geocode/json?address=${CityStateCountry}&key=${api_key2}`, function (err, response, body) {
