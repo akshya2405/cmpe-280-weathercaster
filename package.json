@@ -7,8 +7,7 @@
     "test": "mocha",
     "Frontend": "cd Frontend && npm install && npm start",
     "Backend": "cd Backend && npm install && node index.js",
-    "devstart": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
-    "start": "npm start",
+    "start": "npm run Backend && npm run Frontend",
     "Frontend:build": "cd Backend && npm run build",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install"
   },
