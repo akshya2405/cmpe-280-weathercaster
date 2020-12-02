@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import {backendURI} from '../../common/config';
 
 import Footer from '../LandingPage/Footer'
 
@@ -32,9 +33,9 @@ const Monthly = () => {
   useEffect(async () => {
     let response;
     if (units === "celsius") {
-      response = await axios.get('http://localhost:3001/monthly/celsius', { params: { CityStateCountry: searchQuery } })
+      response = await axios.get(backendURI+'/monthly/celsius', { params: { CityStateCountry: searchQuery } })
     } else {
-      response = await axios.get('http://localhost:3001/monthly/farenheit', { params: { CityStateCountry: searchQuery } })
+      response = await axios.get(backendURI+'/monthly/farenheit', { params: { CityStateCountry: searchQuery } })
     }
     console.log(response.data);
     setSearchData(response.data);

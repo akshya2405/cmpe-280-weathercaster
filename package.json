@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "Frontend": "cd Frontend && npm start",
-    "Backend": "cd Backend && node index.js",
+    "Frontend": "cd Frontend && npm install && npm start",
+    "Backend": "cd Backend && npm install && node index.js",
     "start": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
-    "Frontend:build": "cd Frontend && npm run build && npm install",
-    "Backend:build": "cd Backend && npm install",
+    "Frontend:build": "cd Backend && npm run build",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install"
   },
   "author": "",

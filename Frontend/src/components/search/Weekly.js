@@ -1,3 +1,4 @@
+import {backendURI} from '../../common/config';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -10,6 +11,7 @@ import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState, Component } from 'react';
 var moment_timezone = require('moment-timezone');
+//import {backendURI} from '../../common/config';
 
 const styles = theme => ({
     root: {
@@ -48,9 +50,9 @@ class Weekly extends Component {
         let response;
 
         if (units === "celsius") {
-            response = await axios.get('http://localhost:3001/weekly/celsius', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(backendURI+'/weekly/celsius', { params: { CityStateCountry: searchQuery } })
           } else {
-            response = await axios.get('http://localhost:3001/weekly/farenheit', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(backendURI+'/weekly/farenheit', { params: { CityStateCountry: searchQuery } })
           }
 
         console.log(response.data);

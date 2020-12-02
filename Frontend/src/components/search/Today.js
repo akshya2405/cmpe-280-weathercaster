@@ -4,6 +4,7 @@ import moment from 'moment';
 import AlertModal from '../AlertModal';
 import moment_timezone from 'moment-timezone';
 import Footer from '../LandingPage/Footer';
+import {backendURI} from '../../common/config';
 
 const Today = (props) => {
   // if (!(props.location.state === undefined || props.location.state === '' || props.location.state === null)) {
@@ -19,9 +20,9 @@ const Today = (props) => {
   useEffect(async () => {
     let response;
     if (units === "celsius") {
-      response = await axios.get('http://localhost:3001/today/celsius', { params: { CityStateCountry: searchQuery } })
+      response = await axios.get(backendURI+'/today/celsius', { params: { CityStateCountry: searchQuery } })
     } else {
-      response = await axios.get('http://localhost:3001/today/farenheit', { params: { CityStateCountry: searchQuery } })
+      response = await axios.get(backendURI+'/today/farenheit', { params: { CityStateCountry: searchQuery } })
     }
     console.log(response.data);
     setSearchData(response.data);

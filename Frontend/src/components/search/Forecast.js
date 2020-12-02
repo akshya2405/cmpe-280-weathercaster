@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import moment from 'moment';
 import { useHistory } from "react-router-dom";
+import {backendURI} from '../../common/config';
 
 
 class Forecast extends Component {
@@ -28,9 +29,9 @@ class Forecast extends Component {
         let response;
 
         if (units === "celsius") {
-            response = await axios.get('http://localhost:3001/weekly/celsius', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(backendURI+'/weekly/celsius', { params: { CityStateCountry: searchQuery } })
           } else {
-            response = await axios.get('http://localhost:3001/weekly/farenheit', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(backendURI+'/weekly/farenheit', { params: { CityStateCountry: searchQuery } })
           }
 
         

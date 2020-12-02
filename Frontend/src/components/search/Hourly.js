@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import moment from 'moment';
 import { useHistory } from "react-router-dom";
+import {backendURI} from '../../common/config';
 
 
 
@@ -77,9 +78,9 @@ class Hourly extends Component {
         let response;
 
         if (units === "celsius") {
-            response = await axios.get('http://localhost:3001/hourly/celsius', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(backendURI+'/hourly/celsius', { params: { CityStateCountry: searchQuery } })
           } else {
-            response = await axios.get('http://localhost:3001/hourly/farenheit', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(backendURI+'/hourly/farenheit', { params: { CityStateCountry: searchQuery } })
           }
 
         console.log(response.data);

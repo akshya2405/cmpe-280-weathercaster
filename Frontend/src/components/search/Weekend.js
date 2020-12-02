@@ -11,6 +11,8 @@ import axios from 'axios';
 import moment from 'moment';
 import moment_timezone from 'moment-timezone';
 import { useHistory } from "react-router-dom";
+import {backendURI} from '../../common/config';
+
 
 
 
@@ -78,9 +80,9 @@ class Weekend extends Component {
         let response;
 
         if (units === "celsius") {
-            response = await axios.get('http://localhost:3001/weekend/celsius', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(backendURI+'/weekend/celsius', { params: { CityStateCountry: searchQuery } })
           } else {
-            response = await axios.get('http://localhost:3001/weekend/farenheit', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(backendURI+'/weekend/farenheit', { params: { CityStateCountry: searchQuery } })
           }
 
         console.log(response.data);
