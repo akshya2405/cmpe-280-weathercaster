@@ -1,5 +1,6 @@
 //import the require dependencies
 var express = require('express');
+const path=require('path');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
