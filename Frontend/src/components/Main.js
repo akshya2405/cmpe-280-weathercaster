@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Navbar from './LandingPage/Navbar';
 import HomePage from './LandingPage/HomePage';
