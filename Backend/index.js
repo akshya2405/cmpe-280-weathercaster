@@ -15,7 +15,14 @@ const weekendRoutes = require('./Routes/weekend');
 const monthlyRoutes = require('./Routes/monthly');
 
 //use cors to allow cross origin resource sharing
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+// app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+
+app.use(cors());
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 //use express session to maintain session data
 app.use(session({
