@@ -1,14 +1,16 @@
 {
-  "name": "backend",
+  "name": "cmpe-280-weathercaster",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
     "Frontend": "cd Frontend && npm start",
-    "Backend": "cd Backend && nodemon index.js",
+    "Backend": "cd Backend && node index.js",
     "start": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
-    "Frontend:build": "cd Frontend && npm run build"
+    "Frontend:build": "cd Frontend && npm run build && npm install",
+    "Backend:build": "cd Backend && npm install",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install"
   },
   "author": "",
   "license": "ISC",
@@ -20,15 +22,28 @@
     "concurrently": "^5.3.0",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
-    "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "express-sessions": "^1.0.6",
     "mocha": "^5.2.0",
-    "moment": "^2.29.1",
     "nodemon": "^2.0.6",
     "recharts": "^1.8.5",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "react-scripts": "1.1.5",
+    "@material-ui/core": "^4.11.1",
+    "axios": "^0.18.1",
+    "bootstrap": "^4.5.3",
+    "dotenv": "8.2.0",
+    "material-ui": "^0.20.2",
+    "moment": "2.29.1",
+    "moment-timezone": "^0.5.32",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-bootstrap": "1.3.0",
+    "react-cookie": "^3.0.4",
+    "react-cookies": "^0.1.0",
+    "react-dom": "^17.0.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "5.2.0"
   }
 }
-
