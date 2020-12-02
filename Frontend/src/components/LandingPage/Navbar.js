@@ -87,7 +87,7 @@ class Navbar extends Component {
                   <button type="button" id="farenheit" className="btn btn-info" disabled={this.state.farenheit} style={{ backgroundColor: this.state.farenheitColor }} onClick={this.reloadPage}>&#x2109;</button>
                 </div>
               </li>
-              <li>{sessionStorage.getItem("units") === 'celcius' ? (<div style={{ paddingTop: "1rem" }}>&#x2103;</div>) : (<div style={{ paddingTop: "1rem" }}>&#x2109;</div>)}</li>
+              <li>{sessionStorage.getItem("units") === 'celsius' ? (<div style={{ paddingTop: "1rem" }}>&#x2103;</div>) : (<div style={{ paddingTop: "1rem" }}>&#x2109;</div>)}</li>
             </ul>
           </div>
         </nav>
