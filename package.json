@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "Frontend": "cd Frontend && npm install && npm start",
-    "Backend": "cd Backend && npm install && node index.js",
-    "start": "npm run Backend && npm run Frontend",
-    "Frontend:build": "cd Backend && npm run build",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install"
+    "start": "cd Backend && node index.js",
+    "heroku-postbuild": "cd Frontend && npm run build"
   },
   "author": "",
   "license": "ISC",
