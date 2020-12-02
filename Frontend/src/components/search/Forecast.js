@@ -13,7 +13,8 @@ class Forecast extends Component {
         // this.search = this.search.bind(this);
         this.state = { 
             apiResponse: "",
-            searchQuery : sessionStorage.getItem("location")
+            searchQuery : sessionStorage.getItem("location"),
+            units       : sessionStorage.getItem("units")
         };
         
 
