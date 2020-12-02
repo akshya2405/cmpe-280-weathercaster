@@ -97,7 +97,7 @@ class Weekend extends Component {
         let data=resp.data;
 
         if(data){
-            var weekend = data.slice(1,data.length-1)
+            var weekend = data.slice(1,data.length)
             console.log(data,weekend,typeof(resp.data),"response structure")
 
 

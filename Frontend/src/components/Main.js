@@ -11,6 +11,7 @@ import Hourly from './search/Hourly';
 import Weekend from './search/Weekend';
 import Weekly from './search/Weekly';
 import Monthly from './search/Monthly';
+import Forecast from './search/Forecast';
 //Create a Main Component
 class Main extends Component {
   render() {
@@ -25,6 +26,7 @@ class Main extends Component {
         <Route path="/search/weekend" component={Weekend} />
         <Route path="/search/weekly" component={Weekly} />
         <Route path="/search/Monthly" component={Monthly}/>
+        <Route path="/search/forecast" component={Forecast} />
       </div>
     )
   }
