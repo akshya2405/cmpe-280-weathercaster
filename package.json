@@ -7,7 +7,7 @@
     "test": "mocha",
     "Frontend": "cd Frontend && npm start",
     "Backend": "cd Backend && nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
+    "start": "concurrently --kill-others-on-fail \"npm run Frontend\" \"npm run Backend\"",
     "Frontend:build": "cd Frontend && npm run build"
   },
   "author": "",
