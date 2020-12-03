@@ -20,10 +20,10 @@ const port = process.env.PORT || 5000
  //app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, './build')));
+app.use(express.static(path.join(__dirname, '../Frontend/build')));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, './build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../Frontend/build', 'index.html'));
 });
 
 //use express session to maintain session data
@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 
 //Allow Access Control
 app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', express.static(path.join(__dirname, './build')));
+    res.setHeader('Access-Control-Allow-Origin', express.static(path.join(__dirname, '../Frontend/build')));
     //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
