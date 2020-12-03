@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import moment from 'moment';
 import { useHistory } from "react-router-dom";
+import Footer from '../LandingPage/Footer';
 
 
 class Forecast extends Component {
@@ -65,7 +66,7 @@ class Forecast extends Component {
         // const searchQuery = this.state.sessionStorage.getItem("location");
 
         return(
-            <div>
+            <div className="container" style={{paddingTop: "1rem"}}>
                 <p>Forecast</p>
                 <div><h3>{searchQuery}</h3></div>
 
@@ -80,7 +81,7 @@ class Forecast extends Component {
                 <Line type="monotone" dataKey="wind_speed" stroke="#82ca9d" />
                 <Line type="monotone" dataKey="dew_point" stroke="#EF350D" />
                 </LineChart>
-                
+                <Footer />
             </div>
         )
     }

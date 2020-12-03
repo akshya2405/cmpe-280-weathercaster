@@ -11,6 +11,7 @@ import axios from 'axios';
 import moment from 'moment';
 import moment_timezone from 'moment-timezone';
 import { useHistory } from "react-router-dom";
+import Footer from '../LandingPage/Footer';
 
 
 
@@ -163,11 +164,12 @@ class Weekend extends Component {
         // const searchQuery = this.state.sessionStorage.getItem("location");
 
         return(
-            <div>
+          <div style={{ paddingLeft: "2rem" }}>
                 <p>Weekend Weather</p>
                 {/* <p className="App-intro">;{apiResponse}</p> */}
                 <div><h3>{searchQuery}</h3></div>
                 <div>{this.simpleTable(classes,apiResponse)}</div> 
+                <Footer />
             </div>
         )
     }

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import AlertModal from '../AlertModal';
-import moment_timezone from 'moment-timezone';
 import Footer from '../LandingPage/Footer';
 
 const Today = (props) => {

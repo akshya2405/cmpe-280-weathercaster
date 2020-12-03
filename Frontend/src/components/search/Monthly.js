@@ -54,7 +54,7 @@ const Monthly = () => {
   }
 
   let checkCondition = (val) => {
-    let data = monthData.filter((data, index) => moment.unix(data.dt).format("D") === '' + val);
+    let data = monthData.filter((data, index) => (moment.unix(data.dt).format("D") === '' + val && moment.unix(data.dt).format("M") === '12'));
     if (data[0]) {
       return true
     } else {
@@ -96,7 +96,7 @@ const Monthly = () => {
           <div>{val}</div>
           {val && monthData && monthData.length > 0 && checkCondition(val) &&
           (<div>
-            <div style={{ fontSize: "35px", textAlign: "center" }}>
+            <div style={{ fontSize: "35px", textAlign: "center", backgroundColor: "#d3f0f2" }}>
               {getIcon(val)}
             </div>
             <div style={{fontSize:"35px", textAlign:"center"}}>

@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState, Component } from 'react';
+import Footer from '../LandingPage/Footer';
 var moment_timezone = require('moment-timezone');
 
 const styles = theme => ({
@@ -130,11 +131,12 @@ class Weekly extends Component {
         const { searchQuery } = this.state;
 
         return(
-            <div>
+          <div style={{ paddingLeft: "2rem" }}>
                 <p>Weekly Weather</p>
                 {/* <p className="App-intro">;{apiResponse}</p> */}
                 <div><h3>{searchQuery}</h3></div>
-                <div>{this.simpleTable(classes,apiResponse)}</div> 
+                <div>{this.simpleTable(classes,apiResponse)}</div>
+                <Footer />
             </div>
         )
     }
