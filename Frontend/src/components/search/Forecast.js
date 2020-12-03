@@ -63,6 +63,16 @@ class Forecast extends Component {
           console.log("daily_data")
           console.log(daily_data);
 
+          let getDate = (data)=>{
+              /* let dateArray = [];
+              daily_data.map((data) => {
+                  console.log(data);
+                dateArray.push();
+              }) */
+              console.log(data);
+              return moment.unix(data.dt, "L").tz(apiResponse.data.timezone).format("L")
+            }
+
         // const searchQuery = this.state.sessionStorage.getItem("location");
 
         return(
@@ -73,7 +83,7 @@ class Forecast extends Component {
                 <LineChart width={1000} height={400} data={daily_data}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="dt" />
+                <XAxis dataKey={getDate} />
                 <YAxis />
                 <Tooltip />
                 <Legend />
