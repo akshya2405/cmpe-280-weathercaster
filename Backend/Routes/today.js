@@ -16,7 +16,7 @@ router.get('/today/celsius', async (req, res) => {
         if (err) {
             console.log('error:', error);
         } else {
-            //console.log('body:', body);  
+            // console.log('body:', response);  
             //console.log('body:', body.results[0]);
             let bodydata = JSON.parse(body);
             console.log('body:', bodydata.results[0].geometry.location);

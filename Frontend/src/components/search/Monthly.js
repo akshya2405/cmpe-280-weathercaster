@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-import Footer from '../LandingPage/Footer'
+import Footer from '../LandingPage/Footer';
+import { API_URL } from '../../config';
 
 const Monthly = () => {
 
@@ -32,9 +33,9 @@ const Monthly = () => {
   useEffect(async () => {
     let response;
     if (units === "celsius") {
-      response = await axios.get('http://localhost:3001/monthly/celsius', { params: { CityStateCountry: searchQuery } })
+      response = await axios.get(`${API_URL}monthly/celsius`, { params: { CityStateCountry: searchQuery } })
     } else {
-      response = await axios.get('http://localhost:3001/monthly/farenheit', { params: { CityStateCountry: searchQuery } })
+      response = await axios.get(`${API_URL}monthly/farenheit`, { params: { CityStateCountry: searchQuery } })
     }
     console.log(response.data);
     setSearchData(response.data);

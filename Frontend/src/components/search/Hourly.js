@@ -19,7 +19,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { useHistory } from "react-router-dom";
 import Footer from '../LandingPage/Footer';
-
+import { API_URL } from '../../config';
 
 
 const styles = theme => ({
@@ -161,9 +161,9 @@ class Hourly extends Component {
         let response;
 
         if (units === "celsius") {
-            response = await axios.get('http://localhost:3001/hourly/celsius', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(`${API_URL}hourly/celsius`, { params: { CityStateCountry: searchQuery } })
           } else {
-            response = await axios.get('http://localhost:3001/hourly/farenheit', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(`${API_URL}hourly/farenheit`, { params: { CityStateCountry: searchQuery } })
           }
 
         console.log(response.data);

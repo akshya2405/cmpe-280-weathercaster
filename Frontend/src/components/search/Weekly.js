@@ -8,9 +8,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import moment from 'moment';
-import React, { useEffect, useState, Component } from 'react';
+import React, { Component } from 'react';
 import Footer from '../LandingPage/Footer';
-var moment_timezone = require('moment-timezone');
+import { API_URL } from '../../config';
 
 const styles = theme => ({
     root: {
@@ -49,9 +49,9 @@ class Weekly extends Component {
         let response;
 
         if (units === "celsius") {
-            response = await axios.get('http://localhost:3001/weekly/celsius', { params: { CityStateCountry: searchQuery } })
+          response = await axios.get(`${API_URL}weekly/celsius`, { params: { CityStateCountry: searchQuery } })
           } else {
-            response = await axios.get('http://localhost:3001/weekly/farenheit', { params: { CityStateCountry: searchQuery } })
+            response = await axios.get(`${ API_URL }weekly/farenheit`, { params: { CityStateCountry: searchQuery } })
           }
 
         console.log(response.data);

@@ -12,7 +12,7 @@ import moment from 'moment';
 import moment_timezone from 'moment-timezone';
 import { useHistory } from "react-router-dom";
 import Footer from '../LandingPage/Footer';
-
+import { API_URL } from '../../config';
 
 
 const styles = theme => ({
@@ -79,9 +79,9 @@ class Weekend extends Component {
         let response;
 
         if (units === "celsius") {
-            response = await axios.get('http://localhost:3001/weekend/celsius', { params: { CityStateCountry: searchQuery } })
+          response = await axios.get(`${API_URL}weekend/celsius`, { params: { CityStateCountry: searchQuery } })
           } else {
-            response = await axios.get('http://localhost:3001/weekend/farenheit', { params: { CityStateCountry: searchQuery } })
+          response = await axios.get(`${API_URL}weekend/farenheit`, { params: { CityStateCountry: searchQuery } })
           }
 
         console.log(response.data);
