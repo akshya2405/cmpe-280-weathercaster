@@ -16,13 +16,15 @@ const driver = new webdriver.Builder()
   .forBrowser('chrome')
   .build();
 
+const TEST_URL = 'http://localhost:3000/weathercaster';
+
 describe('multiple selenium tests', async function () {
   afterAll(async function () {
     await driver.quit();
   });
 
   it('check title', (done) => {
-    driver.get('http://localhost:3000/weathercaster').then(function () {
+    driver.get(TEST_URL).then(function () {
       driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
         driver.getTitle().then(function (title) {
           console.log(title)
@@ -38,11 +40,11 @@ describe('multiple selenium tests', async function () {
   })
 
   it('search for london weather', (done) => {
-    driver.get('http://localhost:3000/weathercaster').then(function () {
+    driver.get(TEST_URL).then(function () {
       driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
         driver.getCurrentUrl().then(function (url) {
           console.log(url);
-          if (url === 'http://localhost:3000/weathercaster/search/today?searchString=London') {
+          if (url === TEST_URL + '/search/today?searchString=London') {
             console.log('Test passed');
           } else {
             console.log('Test failed');
@@ -54,12 +56,12 @@ describe('multiple selenium tests', async function () {
   });
 
   it('search from today page', (done) => {
-    driver.get('http://localhost:3000/weathercaster').then(function () {
+    driver.get(TEST_URL).then(function () {
       driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
         driver.findElement(webdriver.By.id('navbar-input')).sendKeys('Chennai\n').then(function () {
           driver.getCurrentUrl().then(function (url) {
             console.log(url);
-            if (url === 'http://localhost:3000/weathercaster/search/today?') {
+            if (url === TEST_URL + '/search/today?') {
               console.log('Test passed');
             } else {
               console.log('Test failed');
@@ -72,7 +74,7 @@ describe('multiple selenium tests', async function () {
   });
 
   it('change to celcius', (done) => {
-    driver.get('http://localhost:3000/weathercaster').then(function () {
+    driver.get(TEST_URL).then(function () {
       driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
         driver.findElement(webdriver.By.id('celsius')).click().then(async function () {
           let element = await driver.findElement(webdriver.By.id('unit')).getText();
@@ -89,12 +91,12 @@ describe('multiple selenium tests', async function () {
   });
 
   it('navbar change', (done) => {
-    driver.get('http://localhost:3000/weathercaster').then(function () {
+    driver.get(TEST_URL).then(function () {
       driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
         driver.findElement(webdriver.By.linkText('Hourly')).click().then(async function () {
           driver.getCurrentUrl().then(function (url) {
             console.log(url);
-            if (url === 'http://localhost:3000/weathercaster/search/hourly') {
+            if (url === TEST_URL + '/search/hourly') {
               console.log('Test passed');
             } else {
               console.log('Test failed');
