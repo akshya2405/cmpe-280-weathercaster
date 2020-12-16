@@ -22,7 +22,7 @@ router.get('/today/celsius', async (req, res) => {
             console.log('body:', bodydata.results[0].geometry.location);
             lat = bodydata.results[0].geometry.location.lat;
             lon = bodydata.results[0].geometry.location.lng;
-            const weather_url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${api_key}`;
+            const weather_url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=hi&exclude=hourly,minutely&units=metric&appid=${api_key}`;
             request(weather_url, function (err, response, body) {
                 if (err) {
                     console.log('error:', error);
@@ -57,7 +57,7 @@ router.get('/today/farenheit', async (req, res) => {
             console.log('body:', bodydata.results[0].geometry.location);
             lat = bodydata.results[0].geometry.location.lat;
             lon = bodydata.results[0].geometry.location.lng;
-            const weather_url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=imperial&appid=${api_key}`;
+          const weather_url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=hi&exclude=hourly,minutely&units=imperial&appid=${api_key}`;
             request(weather_url, function (err, response, body) {
                 if (err) {
                     console.log('error:', error);

@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       //Use Browser Router to route to different pages
-      <BrowserRouter basename="/weathercaster" forceRefresh="true">
+      <BrowserRouter basename="/weathercaster" forceRefresh={true}>
         <div>
           {/* App Component Has a Child Component called Main*/}
           <Main/>

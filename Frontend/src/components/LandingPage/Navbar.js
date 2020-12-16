@@ -49,7 +49,7 @@ class Navbar extends Component {
             <h1>WeatherCaster</h1>
           </div>
           <div style={{ height: "60px", paddingBottom: "15px", width: "30%", textAlign: "right", float: "right" }}>
-            <form>
+            <form onSubmit={this.search}>
               <input
                 type="text"
                 id="navbar-input"
@@ -57,11 +57,11 @@ class Navbar extends Component {
                 onChange={(e) => this.setState({searchString: e.target.value})}
               />
               <button
-                type="button"
+                type="submit"
                 id="navbar-button"
                 className="fa fa-search"
                 value="Search"
-                onClick={this.search}
+                // onClick={this.search}
               >
                 <Search />
               </button>
@@ -87,7 +87,7 @@ class Navbar extends Component {
                   <button type="button" id="farenheit" className="btn btn-info" disabled={this.state.farenheit} style={{ backgroundColor: this.state.farenheitColor }} onClick={this.reloadPage}>&#x2109;</button>
                 </div>
               </li>
-              <li>{sessionStorage.getItem("units") === 'celsius' ? (<div style={{ paddingTop: "1rem" }}>&#x2103;</div>) : (<div style={{ paddingTop: "1rem" }}>&#x2109;</div>)}</li>
+              <li>{sessionStorage.getItem("units") === 'celsius' ? (<div id="unit" style={{ paddingTop: "1rem" }}>&#x2103;</div>) : (<div id="unit" style={{ paddingTop: "1rem" }}>&#x2109;</div>)}</li>
             </ul>
           </div>
         </nav>

@@ -12,6 +12,7 @@ const HomePage = () => {
   let search = () => {
     if (searchString) {
       setError("")
+      console.log(searchString)
       sessionStorage.setItem("location", searchString)
       sessionStorage.setItem("units", "farenheit")
       history.push('/search/today');
@@ -26,19 +27,20 @@ const HomePage = () => {
           <h1>WeatherCaster</h1>
         </header>
         <div className="center">
-          <form>
+          <form onSubmit={(e) => search(e)}>
             <input
               type="text"
+              name="searchString"
               // className="rounded-pill"
               onChange={(e) => setsearchString(e.target.value)}
               placeholder="Search using city, state or country"
               required
             />
             <button
-              type="button"
+              type="submit"
               className="fa fa-search"
               value="Search"
-              onClick={(e) => search(e)}
+              // onClick={(e) => search(e)}
             >
               <Search />
             </button>

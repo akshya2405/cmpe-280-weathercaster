@@ -7,3 +7,103 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+const webdriver = require('selenium-webdriver'),
+  By = webdriver.By,
+  until = webdriver.until;
+
+const driver = new webdriver.Builder()
+  .forBrowser('chrome')
+  .build();
+
+describe('multiple selenium tests', async function () {
+  afterAll(async function () {
+    await driver.quit();
+  });
+
+  it('check title', (done) => {
+    driver.get('http://localhost:3000/weathercaster').then(function () {
+      driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
+        driver.getTitle().then(function (title) {
+          console.log(title)
+          if (title === 'Weathercaster - A CMPE280 Project') {
+            console.log('Test passed');
+          } else {
+            console.log('Test failed');
+          }
+          done();
+        });
+      });
+    });
+  })
+
+  it('search for london weather', (done) => {
+    driver.get('http://localhost:3000/weathercaster').then(function () {
+      driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
+        driver.getCurrentUrl().then(function (url) {
+          console.log(url);
+          if (url === 'http://localhost:3000/weathercaster/search/today?searchString=London') {
+            console.log('Test passed');
+          } else {
+            console.log('Test failed');
+          }
+          done();
+        })
+      });
+    });
+  });
+
+  it('search from today page', (done) => {
+    driver.get('http://localhost:3000/weathercaster').then(function () {
+      driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
+        driver.findElement(webdriver.By.id('navbar-input')).sendKeys('Chennai\n').then(function () {
+          driver.getCurrentUrl().then(function (url) {
+            console.log(url);
+            if (url === 'http://localhost:3000/weathercaster/search/today?') {
+              console.log('Test passed');
+            } else {
+              console.log('Test failed');
+            }
+            done();
+          })
+        })
+      });
+    });
+  });
+
+  it('change to celcius', (done) => {
+    driver.get('http://localhost:3000/weathercaster').then(function () {
+      driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
+        driver.findElement(webdriver.By.id('celsius')).click().then(async function () {
+          let element = await driver.findElement(webdriver.By.id('unit')).getText();
+          console.log(element);
+          if (element === '℃') {
+            console.log('Test passed');
+          } else {
+            console.log('Test failed');
+          }
+          done();
+        })
+      });
+    });
+  });
+
+  it('navbar change', (done) => {
+    driver.get('http://localhost:3000/weathercaster').then(function () {
+      driver.findElement(webdriver.By.name('searchString')).sendKeys('London\n').then(function () {
+        driver.findElement(webdriver.By.linkText('Hourly')).click().then(async function () {
+          driver.getCurrentUrl().then(function (url) {
+            console.log(url);
+            if (url === 'http://localhost:3000/weathercaster/search/hourly') {
+              console.log('Test passed');
+            } else {
+              console.log('Test failed');
+            }
+            done();
+          })
+        })
+      });
+    });
+  });
+
+})
