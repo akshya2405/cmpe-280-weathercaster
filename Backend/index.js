@@ -13,7 +13,7 @@ const hourlyRoutes = require('./Routes/hourly');
 const weeklyRoutes = require('./Routes/weekly');
 const weekendRoutes = require('./Routes/weekend');
 const monthlyRoutes = require('./Routes/monthly');
-const frontEndURL = "http://localhost:3000";
+const frontEndURL = "http://54.219.176.161:3000";
 
 //use cors to allow cross origin resource sharing
 app.use(cors({ origin: frontEndURL, credentials: true }));

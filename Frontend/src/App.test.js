@@ -16,7 +16,7 @@ const driver = new webdriver.Builder()
   .forBrowser('chrome')
   .build();
 
-const TEST_URL = 'http://localhost:3000/weathercaster';
+const TEST_URL = 'http://54.219.176.161:3000/weathercaster';
 
 describe('multiple selenium tests', async function () {
   afterAll(async function () {
